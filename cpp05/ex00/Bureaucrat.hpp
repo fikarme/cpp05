@@ -8,6 +8,7 @@
 using std::cout;
 using std::endl;
 using std::string;
+using std::ostream;
 using std::exception;
 
 class Bureaucrat {
@@ -34,5 +35,7 @@ class Bureaucrat {
 				virtual const char* what() const throw();
 		};
 };
+
+ostream &operator<<(ostream &out, const Bureaucrat &bureaucrat);
 
 #endif
