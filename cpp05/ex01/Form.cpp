@@ -10,17 +10,10 @@ Form::Form() : _name(""), _signGrade(150), _execGrade(150), _isSigned(false) {
 
 Form::Form(string n, int sg, int eg) : _name(n), _signGrade(sg), _execGrade(eg), _isSigned(false) {
     cout << "Form constructor is called." << endl;
-    try
-    {
-        if (sg < 1 || eg < 1)
-            throw (GradeTooHighException());
-        else if (sg > 150 || eg > 150)
-            throw (GradeTooLowException());
-    }
-    catch (exception &e)
-    {
-        cout << e.what() << endl;
-    }
+    if (sg < 1 || eg < 1)
+        throw GradeTooHighException();
+    else if (sg > 150 || eg > 150)
+        throw GradeTooLowException();
 }
 
 Form::Form(const Form &cpy) : _name(cpy._name),  _signGrade(cpy._signGrade), _execGrade(cpy._execGrade), _isSigned(cpy._isSigned) {
@@ -35,8 +28,8 @@ Form &Form::operator=(const Form &cpy) {
 }
 
 void Form::beSigned(const Bureaucrat &b) {
-    if (b.getGrade() > this->getGrade())
-        throw(GradeTooLowException());
+    if (b.getGrade() > this->_signGrade)
+        throw GradeTooLowException();
     this->_isSigned = true;
 }
 
