@@ -1,6 +1,5 @@
 #include "Bureaucrat.hpp"
 #include "Intern.hpp"
-#include <cstdlib>
 #include <ctime>
 
 inline void y() {
@@ -21,7 +20,6 @@ inline void b(bool b) {
 int main() {
     srand(time(NULL));
     
-    // Create intern and bureaucrats
     Intern intern;
     Bureaucrat highGrade("Alice", 1);
     Bureaucrat midGrade("Bob", 50);
@@ -32,7 +30,6 @@ y();
     cout << lowGrade << endl;
 y();
 
-    // Test valid form creation
     cout << "\033[1;31m--- INTERN FORM CREATION TESTS ---\033[0m" << endl;
     try {
         AForm *shrub = intern.makeForm("shrubbery creation", "garden");
@@ -42,11 +39,8 @@ y();
         highGrade.executeForm(*shrub);
         delete shrub;
     }
-    catch (const exception &e) {
-        r(e.what());
-    }
+    catch (const exception &e) {r(e.what());}
 y();
-
     try {
         AForm *robot = intern.makeForm("robotomy request", "target1");
         cout << *robot << endl;
@@ -55,11 +49,8 @@ y();
         highGrade.executeForm(*robot);
         delete robot;
     }
-    catch (const exception &e) {
-        r(e.what());
-    }
+    catch (const exception &e) {r(e.what());}
 y();
-
     try {
         AForm *pardon = intern.makeForm("presidential pardon", "criminal");
         cout << *pardon << endl;
@@ -68,34 +59,23 @@ y();
         highGrade.executeForm(*pardon);
         delete pardon;
     }
-    catch (const exception &e) {
-        r(e.what());
-    }
+    catch (const exception &e) {r(e.what());}
 y();
-
-    // Test invalid form creation
     cout << "\033[1;35m--- INVALID FORM CREATION TESTS ---\033[0m" << endl;
     try {
         AForm *invalid = intern.makeForm("invalid form", "target");
         cout << *invalid << endl;
         delete invalid;
     }
-    catch (const exception &e) {
-        r(e.what());
-    }
+    catch (const exception &e) {r(e.what());}
 y();
-
     try {
         AForm *empty = intern.makeForm("", "target");
         cout << *empty << endl;
         delete empty;
     }
-    catch (const exception &e) {
-        r(e.what());
-    }
+    catch (const exception &e) {r(e.what());}
 y();
-
-    // Test grade validation with intern-created forms
     cout << "\033[1;36m--- GRADE VALIDATION TESTS ---\033[0m" << endl;
     try {
         AForm *presidentialForm = intern.makeForm("presidential pardon", "test_target");
@@ -107,24 +87,16 @@ y();
         
         delete presidentialForm;
     }
-    catch (const exception &e) {
-        r(e.what());
-    }
+    catch (const exception &e) {r(e.what());}
 y();
-
-    // Test execution without signing
     cout << "\033[1;37m--- EXECUTION WITHOUT SIGNING TESTS ---\033[0m" << endl;
     try {
         AForm *unsignedForm = intern.makeForm("shrubbery creation", "unsigned");
         highGrade.executeForm(*unsignedForm);
         delete unsignedForm;
     }
-    catch (const exception &e) {
-        r(e.what());
-    }
+    catch (const exception &e) {r(e.what());}
 y();
-
-    // Test multiple forms from same intern
     cout << "\033[1;38m--- MULTIPLE FORM CREATION TESTS ---\033[0m" << endl;
     try {
         AForm *form1 = intern.makeForm("shrubbery creation", "location1");
@@ -139,27 +111,18 @@ y();
         delete form2;
         delete form3;
     }
-    catch (const exception &e) {
-        r(e.what());
-    }
+    catch (const exception &e) {r(e.what());}
 y();
-
-    // Test case sensitivity
     cout << "\033[1;39m--- CASE SENSITIVITY TESTS ---\033[0m" << endl;
     try {
         AForm *form = intern.makeForm("Shrubbery Creation", "test");
         delete form;
     }
-    catch (const exception &e) {
-        r(e.what());
-    }
-    
+    catch (const exception &e) {r(e.what());}
     try {
         AForm *form = intern.makeForm("ROBOTOMY REQUEST", "test");
         delete form;
     }
-    catch (const exception &e) {
-        r(e.what());
-    }
+    catch (const exception &e) {r(e.what());}
 y();
 }

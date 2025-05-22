@@ -36,11 +36,11 @@ AForm *Intern::makeForm(const string form, const string target) {
 			iter = new PresidentialPardonForm(target);
 			break;
 		default:
-			throw (Intern::UnknowForm());
+			throw (Intern::UnknownForm());
 	}
     return iter;
 }
 
-const char* Intern::UnknowForm:: what() const throw() {
+const char* Intern::UnknownForm:: what() const throw() {
 	return "Unknown form name.";
 }
