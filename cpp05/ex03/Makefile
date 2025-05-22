@@ -25,5 +25,7 @@ re: fclean all
 
 e: fclean $(NAME)
 	@./$(NAME)
+	@$(RM) $(OBJDIR)
+	@$(RM) $(NAME)
 
 .PHONY: all clean fclean re e

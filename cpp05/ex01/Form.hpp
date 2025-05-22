@@ -25,7 +25,7 @@ class Form {
 		Form&operator=(Form const &cpy);
 
         string  getName() const;
-        int     getGrade() const;
+        int     getSignGrade() const;
         int     getExecGrade() const;
         bool    getIsSigned() const;
         void    beSigned(const Bureaucrat &b);

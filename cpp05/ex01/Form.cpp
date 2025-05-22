@@ -37,7 +37,7 @@ string Form::getName() const {
     return (this->_name);
 }
 
-int Form::getGrade() const {
+int Form::getSignGrade() const {
     return (this->_signGrade);
 }
 
@@ -59,7 +59,7 @@ const char* Form::GradeTooLowException::what() const throw() {
 
 ostream &operator<<(ostream &output, const Form &f) {
     output << "Form Name: " << f.getName() << endl;
-    output << "Sign Grade: " << f.getGrade() << endl;
+    output << "Sign Grade: " << f.getSignGrade() << endl;
     output << "Execute Grade: " << f.getExecGrade() << endl;
     output << "Is Signed: " << f.getIsSigned() << endl;
     return output;

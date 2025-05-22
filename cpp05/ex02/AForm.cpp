@@ -37,7 +37,7 @@ string AForm::getName() const {
     return (this->_name);
 }
 
-int AForm::getGrade() const {
+int AForm::getSignGrade() const {
     return (this->_signGrade);
 }
 
@@ -58,8 +58,10 @@ const char* AForm::GradeTooLowException::what() const throw() {
 }
 
 ostream &operator<<(ostream &output, const AForm &f) {
-    output << f.getName() << " AForm: sign grade " << f.getGrade() 
-        << ", execute grade " << f.getExecGrade() << ", Aform is signed " << f.getIsSigned() << ".";
+    output << "AForm Name: " << f.getName() << endl;
+    output << "Sign Grade: " << f.getSignGrade() << endl;
+    output << "Execute Grade: " << f.getExecGrade() << endl;
+    output << "Is Signed: " << f.getIsSigned() << endl;
     return output;
 }
 
@@ -68,8 +70,6 @@ void AForm::execute(Bureaucrat const &executor) const {
         throw AFormNotSigned();
     else if (executor.getGrade() > this->_execGrade)
         throw GradeTooLowException();
-    // Specific execution logic will be in derived classes
-    // cout << executor.getName() << ", executed the " << this->getName() << "." << endl; // Moved to derived classes
 }
 
 const char* AForm::AFormNotSigned::what() const throw() {

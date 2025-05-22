@@ -70,10 +70,9 @@ void Bureaucrat::signForm(AForm &f) {
 void Bureaucrat::executeForm(AForm const &f) {
     try {
         f.execute(*this);
-        // cout << _name << " executed " << f.getName() << endl; // This line is moved to AForm::execute
+        cout << _name << " executed " << f.getName() << endl;
     }
     catch (exception &e) {
-        // Error messages are handled within AForm::execute or its derived classes
-        // cout << _name << " couldn't execute " << f.getName() << " because " << e.what() << endl;
+        cout << _name << " couldn't execute " << f.getName() << " because " << e.what() << endl;
     }
 }
