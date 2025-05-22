@@ -26,4 +26,4 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
          << "             _.) ,/ *%,"       << endl
          << "     _________/)#(___________" << endl;
     file.close();
-}w
+}

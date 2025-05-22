@@ -4,10 +4,11 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 
 RobotomyRequestForm::RobotomyRequestForm(string target) : AForm("RobotomyRequestForm", 72, 45), _target(target) {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &cpy) : AForm(cpy) {}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &cpy) : AForm(cpy), _target(cpy._target) {}
 
 RobotomyRequestForm& RobotomyRequestForm::operator = (const RobotomyRequestForm &cpy) {
-    this->_target = cpy._target;
+    if (this != &cpy)
+        this->_target = cpy._target;
     return (*this);
 }
 

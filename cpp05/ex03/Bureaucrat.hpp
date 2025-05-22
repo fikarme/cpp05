@@ -31,7 +31,7 @@ class Bureaucrat {
 
         void    signForm(AForm &f);
         void    executeForm(AForm const &f);
-        
+
 		class GradeTooHighException : public exception {
 			public:
 				virtual const char* what() const throw();
