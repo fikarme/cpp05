@@ -29,100 +29,108 @@ y();
     cout << midGrade << endl;
     cout << lowGrade << endl;
 y();
-
     cout << "\033[1;31m--- INTERN FORM CREATION TESTS ---\033[0m" << endl;
+    AForm *shrub = NULL;
     try {
-        AForm *shrub = intern.makeForm("shrubbery creation", "garden");
+        shrub = intern.makeForm("shrubbery creation", "garden");
         cout << *shrub << endl;
         highGrade.signForm(*shrub);
         b(shrub->getIsSigned());
         highGrade.executeForm(*shrub);
-        delete shrub;
     }
     catch (const exception &e) {r(e.what());}
+    delete shrub;
+
 y();
+    AForm *robot = NULL;
     try {
-        AForm *robot = intern.makeForm("robotomy request", "target1");
+        robot = intern.makeForm("robotomy request", "target1");
         cout << *robot << endl;
         highGrade.signForm(*robot);
         b(robot->getIsSigned());
         highGrade.executeForm(*robot);
-        delete robot;
     }
     catch (const exception &e) {r(e.what());}
+    delete robot;
+
 y();
+    AForm *pardon = NULL;
     try {
-        AForm *pardon = intern.makeForm("presidential pardon", "criminal");
+        pardon = intern.makeForm("presidential pardon", "criminal");
         cout << *pardon << endl;
         highGrade.signForm(*pardon);
         b(pardon->getIsSigned());
         highGrade.executeForm(*pardon);
-        delete pardon;
     }
     catch (const exception &e) {r(e.what());}
+    delete pardon;
 y();
     cout << "\033[1;35m--- INVALID FORM CREATION TESTS ---\033[0m" << endl;
+    AForm *invalid = NULL;
     try {
-        AForm *invalid = intern.makeForm("invalid form", "target");
+        invalid = intern.makeForm("invalid form", "target");
         cout << *invalid << endl;
-        delete invalid;
     }
     catch (const exception &e) {r(e.what());}
+    delete invalid;
 y();
+    AForm *empty = NULL;
     try {
-        AForm *empty = intern.makeForm("", "target");
+        empty = intern.makeForm("", "target");
         cout << *empty << endl;
-        delete empty;
     }
     catch (const exception &e) {r(e.what());}
+    delete empty;
 y();
     cout << "\033[1;36m--- GRADE VALIDATION TESTS ---\033[0m" << endl;
+    AForm *presidentialForm = NULL;
     try {
-        AForm *presidentialForm = intern.makeForm("presidential pardon", "test_target");
+        presidentialForm = intern.makeForm("presidential pardon", "test_target");
         cout << *presidentialForm << endl;
         
-        // Test with insufficient grade for signing (50 > 25)
         midGrade.signForm(*presidentialForm);
         b(presidentialForm->getIsSigned());
-        
-        delete presidentialForm;
     }
     catch (const exception &e) {r(e.what());}
+    delete presidentialForm;
 y();
     cout << "\033[1;37m--- EXECUTION WITHOUT SIGNING TESTS ---\033[0m" << endl;
+    AForm *unsignedForm = NULL;
     try {
-        AForm *unsignedForm = intern.makeForm("shrubbery creation", "unsigned");
+        unsignedForm = intern.makeForm("shrubbery creation", "unsigned");
         highGrade.executeForm(*unsignedForm);
-        delete unsignedForm;
     }
     catch (const exception &e) {r(e.what());}
+    delete unsignedForm;
 y();
     cout << "\033[1;38m--- MULTIPLE FORM CREATION TESTS ---\033[0m" << endl;
+    AForm *formArray[3] = {NULL, NULL, NULL};
     try {
-        AForm *form1 = intern.makeForm("shrubbery creation", "location1");
-        AForm *form2 = intern.makeForm("robotomy request", "location2");
-        AForm *form3 = intern.makeForm("presidential pardon", "location3");
-        
-        cout << "Created " << form1->getName() << " for " << endl;
-        cout << "Created " << form2->getName() << " for " << endl;
-        cout << "Created " << form3->getName() << " for " << endl;
-        
-        delete form1;
-        delete form2;
-        delete form3;
+        formArray[0] = intern.makeForm("shrubbery creation", "location1");
+        formArray[1] = intern.makeForm("robotomy request", "location2");
+        formArray[2] = intern.makeForm("presidential pardon", "location3");
+        cout << *formArray[0] << endl;
+        cout << *formArray[1] << endl;
+        cout << *formArray[2] << endl;
     }
     catch (const exception &e) {r(e.what());}
+    delete formArray[0];
+    delete formArray[1];
+    delete formArray[2];
 y();
     cout << "\033[1;39m--- CASE SENSITIVITY TESTS ---\033[0m" << endl;
+    AForm *caseSensitiveForm = NULL;
     try {
-        AForm *form = intern.makeForm("Shrubbery Creation", "test");
-        delete form;
+        caseSensitiveForm = intern.makeForm("Shrubbery Creation", "test");
     }
     catch (const exception &e) {r(e.what());}
+    delete caseSensitiveForm;
+    
+    AForm *caseSensitiveForm2 = NULL;
     try {
-        AForm *form = intern.makeForm("ROBOTOMY REQUEST", "test");
-        delete form;
+        caseSensitiveForm2 = intern.makeForm("ROBOTOMY REQUEST", "test");
     }
     catch (const exception &e) {r(e.what());}
+    delete caseSensitiveForm2;
 y();
 }

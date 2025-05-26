@@ -28,4 +28,7 @@ e: fclean $(NAME)
 	@$(RM) $(OBJDIR)
 	@$(RM) $(NAME)
 
-.PHONY: all clean fclean re e
+v: $(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --show-leak-kinds=definite --track-origins=yes --verbose --log-file=valgrind.log ./$(NAME)
+
+.PHONY: all clean fclean re e v
