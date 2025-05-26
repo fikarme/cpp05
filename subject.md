@@ -78,9 +78,7 @@ Implement and submit some tests to ensure everything works as expected.
 # Exercise : 02
 
 Turn-in directory : ex 02 /
-Files to turn in :Makefile, main.cpp, Bureaucrat.[{h, hpp},cpp], +
-AForm.[{h, hpp},cpp], ShrubberyCreationForm.[{h, hpp},cpp], +
-RobotomyRequestForm.[{h, hpp},cpp], PresidentialPardonForm.[{h, hpp},cpp]
+Files to turn in :Makefile, main.cpp, Bureaucrat.[{h, hpp},cpp], + AForm.[{h, hpp},cpp], ShrubberyCreationForm.[{h, hpp},cpp], + RobotomyRequestForm.[{h, hpp},cpp], PresidentialPardonForm.[{h, hpp},cpp]
 
 Now that you have basic forms, it’s time to create a few more that actually do something.
 

@@ -59,8 +59,5 @@ y();
         lowGradeBureaucrat.signForm(if5);
     }
     catch (const exception &e) {r(e.what());}
-    //The exercise is trying to create a specific simulation of bureaucracy
-    //- where a bureaucrat handles the form signing attempt internally
-    //without "bothering" higher levels with exceptions.
 y();
 }

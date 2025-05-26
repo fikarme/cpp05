@@ -36,7 +36,7 @@ y();
     highGrade.executeForm(shrub);
 y();
     ShrubberyCreationForm shrub2("home");
-    lowGrade.signForm(shrub2); // Should fail (150 > 145)
+    lowGrade.signForm(shrub2);
     b(shrub2.getIsSigned());
 y();
     cout << "\033[1;32m--- ROBOTOMY FORM TESTS ---\033[0m" << endl;
@@ -47,9 +47,9 @@ y();
     highGrade.executeForm(robot);
 y();
     RobotomyRequestForm robot2("target2");
-    midGrade.signForm(robot2); // Should succeed (50 < 72)
+    midGrade.signForm(robot2);
     b(robot2.getIsSigned());
-    midGrade.executeForm(robot2); // Should fail (50 > 45)
+    midGrade.executeForm(robot2);
 y();
     cout << "\033[1;34m--- PRESIDENTIAL FORM TESTS ---\033[0m" << endl;
     PresidentialPardonForm pardon("criminal");
@@ -59,7 +59,7 @@ y();
     highGrade.executeForm(pardon);
 y();
     PresidentialPardonForm pardon2("another_criminal");
-    midGrade.signForm(pardon2); // Should fail
+    midGrade.signForm(pardon2);
     b(pardon2.getIsSigned());
 y();
     cout << "\033[1;35m--- INVALID FORM TESTS ---\033[0m" << endl;
@@ -77,26 +77,26 @@ y();
     cout << "\033[1;37m--- EXECUTION WITHOUT SIGNING TESTS ---\033[0m" << endl;
     try {
         ShrubberyCreationForm unsignedForm("unsigned");
-        highGrade.executeForm(unsignedForm); // Should fail - not signed
+        highGrade.executeForm(unsignedForm);
     }
     catch (const exception &e) {r(e.what());}
 y();
     cout << "\033[1;38m--- GRADE MODIFICATION TESTS ---\033[0m" << endl;
     Bureaucrat testBureaucrat("Test", 2);
     cout << testBureaucrat << endl;
-    testBureaucrat.increment(); // Should become grade 1
+    testBureaucrat.increment();
     cout << testBureaucrat << endl;
     try {
-        testBureaucrat.increment(); // Should fail (can't go below 1)
+        testBureaucrat.increment();
     }
     catch (const exception &e) {r(e.what());}
 y();
     Bureaucrat testBureaucrat2("Test2", 149);
     cout << testBureaucrat2 << endl;
-    testBureaucrat2.decrement(); // Should become grade 150
+    testBureaucrat2.decrement();
     cout << testBureaucrat2 << endl;
     try {
-        testBureaucrat2.decrement(); // Should fail (can't go above 150)
+        testBureaucrat2.decrement();
     }
     catch (const exception &e) {r(e.what());}
 y();
