@@ -4,6 +4,12 @@ Bureaucrat::~Bureaucrat(){
 	cout << "Bureaucrat destructor called." << endl;
 }
 
+// If an exception is thrown, _name is already initialized but _grade is uninitialized.
+// However, this is fine because:
+// Exception prevents object creation
+// No destructor is called
+// No partially constructed object exists
+
 Bureaucrat::Bureaucrat(const string name, int grade) : _name(name){
     cout << "Bureaucrat constructor called." << endl;
 	if (grade < 1)
@@ -52,6 +58,8 @@ const char* Bureaucrat::GradeTooLowException::what() const throw(){
 	return ("Grade too low.");
 }
 
+// Returns ostream& to enable chaining: cout << b1 << b2 << endl;
+// but how?
 ostream &operator<<(ostream &out, const Bureaucrat &bureaucrat){
 	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << ".";
 	return (out);

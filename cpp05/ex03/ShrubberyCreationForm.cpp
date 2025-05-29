@@ -16,6 +16,10 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	this->AForm::execute(executor);
     ofstream file((this->_target + "_shrubbery").c_str());
 
+    if (!file.is_open()) {
+        throw std::runtime_error("Could not create file");
+    }
+
     file << "           %%%,%%%%%%%"        << endl
          << "           ,'%% \\-*%%%%%%%"   << endl
          << "     ;%%%%%*%   _%%%%\""       << endl
@@ -27,3 +31,5 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
          << "     _________/)#(___________" << endl;
     file.close();
 }
+
+//SOLID Principles Analysis
